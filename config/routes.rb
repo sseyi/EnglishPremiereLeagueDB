@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :players
+  resources :teams
   # RESTful routes
   resources :examples, except: %i[new edit]
 

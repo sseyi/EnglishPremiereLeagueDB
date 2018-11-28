@@ -7,6 +7,9 @@ class ExamplesController < OpenReadController
   # GET /examples.json
   def index
     @examples = Example.all
+    # if we wanted to limit to current_user's examples
+    # inherent from ProtectedController
+    # current_user.examples
 
     render json: @examples
   end
@@ -20,8 +23,11 @@ class ExamplesController < OpenReadController
   # POST /examples
   # POST /examples.json
   def create
+    # TOKEN looks up current_user
+    # use current_user to build our resource
+    # .build is same as .new
     @example = current_user.examples.build(example_params)
-
+    # => examples with user_id automatically filled in
     if @example.save
       render json: @example, status: :created
     else
@@ -48,6 +54,7 @@ class ExamplesController < OpenReadController
   end
 
   def set_example
+    # Only looks up examples that belong to current_user
     @example = current_user.examples.find(params[:id])
   end
 

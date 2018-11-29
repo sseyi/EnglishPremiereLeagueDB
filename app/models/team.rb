@@ -2,5 +2,5 @@
 
 class Team < ApplicationRecord
   belongs_to :user
-  has_many :teams
+  has_many :players
 end

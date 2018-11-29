@@ -15,7 +15,7 @@ class PlayersController < OpenReadController
 
   # POST /players
   def create
-    @player = Player.new(player_params)
+    @player = current_user.players.new(player_params)
 
     if @player.save
       render json: @player, status: :created, location: @player
@@ -42,12 +42,12 @@ class PlayersController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_player
-    @player = Player.find(params[:id])
+    @player = current_user.players.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
   def player_params
-    params.require(:player).permit(:first_name, :last_name, :position, :age, :goals, :user_id)
+    params.require(:player).permit(:first_name, :last_name, :position, :age, :goals, :team_id)
   end
 
   private :set_player, :player_params

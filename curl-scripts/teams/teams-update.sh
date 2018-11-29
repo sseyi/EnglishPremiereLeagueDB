@@ -5,7 +5,7 @@ curl --include --request GET "http://localhost:4741/teams/${ID}"
 --data '{
   "teams": {
     "name": "'"${NAME}"'",
-    "record": "'"${RECORD}"'",
+    "result": "'"${RESULT}"'",
     "location": "'"${LOCATION}"'"
   }
 }'

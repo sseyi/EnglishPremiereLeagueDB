@@ -9,6 +9,9 @@ curl --include --request POST "http://localhost:4741/players" \
     "last_name": "'"${LAST}"'",
     "position": "'"${POSITION}"'",
     "age": "'"${AGE}"'",
-    "goals": "'"${GOALS}"'"
+    "goals": "'"${GOALS}"'",
+    "team_id": "'"${TEAM_ID}"'"
   }
 }'
+
+echo

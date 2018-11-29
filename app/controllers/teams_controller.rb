@@ -44,12 +44,12 @@ class TeamsController < OpenReadController
   # Use callbacks to share common setup or constraints between actions.
 
   def set_team
-    @team = Team.new(team_params)
+    @team = current_user.teams.new(team_params)
   end
 
   # Only allow a trusted parameter "white list" through.
   def team_params
-    params.require(:team).permit(:name, :record, :location, :user_id, :player_id)
+    params.require(:team).permit(:name, :standings, :location)
   end
 
   private :set_team, :team_params

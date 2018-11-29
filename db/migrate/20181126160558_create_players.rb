@@ -6,6 +6,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.string :position
       t.integer :age
       t.integer :goals
+      t.references :team, index: true, foreign_key: true, null: false
 
       t.timestamps
     end

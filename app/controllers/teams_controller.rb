@@ -17,7 +17,7 @@ class TeamsController < OpenReadController
 
   # POST /teams
   def create
-    @team = Team.new(team_params)
+    @team = current_user.teams.build(team_params)
 
     if @team.save
       render json: @team, status: :created, location: @team
@@ -44,12 +44,12 @@ class TeamsController < OpenReadController
   # Use callbacks to share common setup or constraints between actions.
 
   def set_team
-    @team = current_user.teams.find(params[:id])
+    @team = Team.new(team_params)
   end
 
   # Only allow a trusted parameter "white list" through.
   def team_params
-    params.require(:team).permit(:name, :record, :location)
+    params.require(:team).permit(:name, :record, :location, :user_id, :player_id)
   end
 
   private :set_team, :team_params

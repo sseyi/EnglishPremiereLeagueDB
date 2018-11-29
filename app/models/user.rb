@@ -2,5 +2,6 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :examples
+  has_many :teams
+  has_many :players, :through => :teams
 end
